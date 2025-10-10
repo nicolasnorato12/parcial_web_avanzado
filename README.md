@@ -1,49 +1,42 @@
-# Task Manager
+# Task Manager - Next.js con Feature-Sliced Design
 
-Aplicación de gestión de tareas construida con Next.js utilizando Feature Sliced Design Architecture.
+Este proyecto es una aplicación de gestión de tareas construida con Next.js, siguiendo la arquitectura Feature-Sliced Design (FSD).
 
-## Tecnologías
+## Estructura del Proyecto
+
+El proyecto sigue la arquitectura FSD con las siguientes capas:
+
+- `entities/` - Definiciones de tipos y modelos base
+- `features/` - Componentes con lógica de negocio
+- `widgets/` - Componentes que combinan features
+- `pages-todo/` - Páginas de la aplicación
+- `app/` - Configuración de rutas de Next.js
+
+## Tecnologías Utilizadas
 
 - Next.js 14
 - TypeScript
 - Tailwind CSS
-- Feature Sliced Design
+- React
+- Feature-Sliced Design
 
-## Estructura del Proyecto
+## Cómo Ejecutar
 
-```
-src/
-├── entities/       # Modelos de datos y tipos
-├── features/       # Componentes con lógica de negocio
-├── widgets/        # Componentes compuestos
-├── pages-todo/     # Páginas de la aplicación
-└── app/           # Configuración de rutas
-```
-
-## Instalación
-
+1. Instalar dependencias:
 ```bash
-# Instalar dependencias
 pnpm install
+```
 
-# Iniciar servidor de desarrollo
+2. Ejecutar en modo desarrollo:
+```bash
 pnpm dev
 ```
 
+3. Abrir [http://localhost:3000](http://localhost:3000)
+
 ## Características
 
-- ✅ Agregar nuevas tareas
+- ✅ Agregar tareas
 - ✅ Listar tareas
 - ✅ Interfaz responsive
 - ✅ Validación de formularios
-
-## Arquitectura
-
-Este proyecto sigue la arquitectura Feature Sliced Design (FSD), que ayuda a mantener el código organizado y escalable a medida que la aplicación crece.
-
-## Cómo usar
-
-1. Visita http://localhost:3000/tasks
-2. Escribe el título de una nueva tarea
-3. Presiona "Add" para agregar la tarea
-4. La tarea aparecerá en la lista debajo del formulario
