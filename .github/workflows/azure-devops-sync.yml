@@ -1,6 +1,8 @@
 name: Azure DevOps Sync
 
 on:
+  schedule:
+    - cron: '*/15 * * * *'  # Ejecutar cada 15 minutos
   push:
     branches:
       - main
