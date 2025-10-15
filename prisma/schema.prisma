@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Room {
+  id           String   @id @default(uuid())
+  roomNumber   String   @unique
+  description  String   @db.Text
+  status       String   @default("available")
+  pricePerNight Decimal @db.Decimal(10, 2)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  bookings     Booking[]
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      String   @default("USER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  bookings  Booking[]
+}
+
+model Booking {
+  id            String   @id @default(uuid())
+  room          Room     @relation(fields: [roomId], references: [id])
+  roomId        String
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  startDate     DateTime
+  endDate       DateTime
+  totalPrice    Decimal  @db.Decimal(10, 2)
+  paymentMethod String
+  paymentStatus String   @default("PENDING")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
