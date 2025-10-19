@@ -34,6 +34,10 @@ pnpm dev
 
 3. Abrir [http://localhost:3000](http://localhost:3000)
 
+Notas rápidas:
+- Este proyecto usa Next.js 14 y `app/` routing. Si tienes problemas con versiones de Node, usa Node 18+.
+- Para crear pull requests desde la línea de comandos puedes empujar la rama y abrir el PR en GitHub web.
+
 ## Características
 
 - ✅ Agregar tareas
