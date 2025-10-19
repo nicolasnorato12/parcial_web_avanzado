@@ -11,8 +11,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Layout principal de la aplicación. Mantener sencillo para facilitar pruebas y pruebas E2E.
+  // Nota: Podemos añadir providers (Theme, Auth) aquí en el futuro.
   return (
-    <html lang="en">
+    <html lang="es">
       <body>{children}</body>
     </html>
   )
