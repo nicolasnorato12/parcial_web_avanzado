@@ -27,15 +27,16 @@ export function AddTaskForm({ onAdd }: AddTaskFormProps) {
       <input
         value={title}
         onChange={handleChange}
-        placeholder="Enter Task"
+        placeholder="Ingrese una tarea"
         className="border p-2"
+        aria-label="titulo-tarea"
       />
       <button
         type="submit"
         disabled={!title.trim()}
         className="bg-blue-500 text-white px-4 py-2"
       >
-        Add
+        Agregar
       </button>
     </form>
   );

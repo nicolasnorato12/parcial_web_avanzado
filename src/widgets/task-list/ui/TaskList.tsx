@@ -20,6 +20,7 @@ export function TaskList() {
 
   return (
     <div>
+      {/* Componente de formulario para añadir tareas */}
       <AddTaskForm onAdd={addTask} />
       <ul className="mt-4 space-y-2">
         {tasks.map((task) => (
