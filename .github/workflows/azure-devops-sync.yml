@@ -1,0 +1,40 @@
+name: Azure DevOps Sync
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Ejecutar cada 15 minutos
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  pull_request:
+    types: [opened, closed]
+    branches:
+      - main
+
+jobs:
+  sync-with-azure-devops:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: Azure DevOps Sync
+        uses: microsoft/azure-devops-github-sync@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/your-org/your-project'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Create Work Items from Commits
+        uses: danhellem/github-actions-workitem-sync@master
+        env:
+          ado_token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          ado_organization: 'your-org'
+          ado_project: 'your-project'
+          ado_wit: 'Task'
+          ado_new_state: 'To Do'
+          ado_close_state: 'Done'
+          ado_bypassrules: true
